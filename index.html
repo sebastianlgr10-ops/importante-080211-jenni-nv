@@ -9,7 +9,7 @@ body {
    margin: 0;
     overflow: hidden; /* bloqueado al inicio */
     font-family: Arial, sans-serif;
-    background-color: pink;
+    background-color: rgb(247, 173, 186);
 }
 
 body.scroll-enabled {
@@ -45,12 +45,13 @@ body.scroll-enabled {
 
 /* CONTENIDO */
 .card {
-    background: rgba(255,255,255,0.9);
+    background: rgba(0, 0, 0, 0.467);
     padding: 30px;
     border-radius: 20px;
     max-width: 500px;
     margin: 100px auto;
     text-align: center;
+    color: white;
 }
 
 button {
@@ -140,7 +141,7 @@ button {
     width: 200px;
     height: 200px;
     animation: pulse 1.5s ease-in-out infinite;
-    border-radius: 50%;
+    border-radius: 20%;
     object-fit: cover;
 }
 
@@ -174,28 +175,27 @@ button {
 
 .heart-sparkle {
     position: absolute;
-    font-size: 32px;
-    animation: sparkle 2s ease-in-out infinite;
+    opacity: 0;
     pointer-events: none;
+    animation: florecer 2s ease forwards;
 }
 
-@keyframes sparkle {
-    0%, 100% {
-        opacity: 0.3;
-        transform: scale(1);
+@keyframes florecer {
+    0% {
+        opacity: 0;
+        transform: scale(0.1);
     }
-    50% {
-        opacity: 1;
-        transform: scale(1.2);
-    }
-}
-
-@keyframes fadeInOut {
-    0%, 100% {
+    40% {
         opacity: 0.7;
+        transform: scale(0.7);
     }
-    50% {
+    70% {
         opacity: 1;
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
     }
 }
 
@@ -206,7 +206,7 @@ button {
 
 <!-- PANTALLA DE CARGA -->
 <div id="loading">
-    <img src="foto1.jpeg" alt="Cargando" class="loading-image">
+    <img src="foto8.jpeg" alt="Cargando" class="loading-image">
     <div class="loading-text">espera mi amor...💕 </div>
     <div class="loading-timer" id="timer">5</div>
 </div>
@@ -215,10 +215,10 @@ button {
 
 <div id="app">
     <div class="card">
-        <h2>Hola guapa 💕</h2>
-        <p>Queria hacerte algo especial amor ❤️,pero no sabia que 😿 y decidi hacerte un mini juego para ver q tanto me conoses mi amor  y saber mas cosas de nosotros por que soy muy curioso 😏❤️,hay preguntas un poquito raras jeje 🙈 </p>
-       <button onclick="startGame(); iniciarMusica();">Jugar 💕</button>
-        <p>la verda espero q te guste y te diviertas mucho amor,me costo mucho tiempo hacer estooooo 😿😽</p>
+        <h2>Hola guapa 😏❤️</h2>
+        <p>El otro dia estaba viendo algo en instagram de cosas que te podia hacer y una de esas era hacer una ivitacion para salir,no te molestes no lo habia echo antes por que no tenia dinero para invitarte pero como vi la idea y soy muy bueno programando pues lo hice 😎💕 </p>
+       <button onclick="startGame(); iniciarMusica();">aceptar invitacion 💕</button>
+        <p>espero me la aceptes y te guste muchoo 😽❤️</p>
     </div>
 </div>
 
@@ -232,13 +232,13 @@ button {
    
      <div id="carta">
        <h2>Jenni ❤️</h2><br><br>
-        <p>Mi amor estos ultimos meses ya casi 7 mesesitos juntos han sido sin duda los mejores de mi vida,<br>
+        <p>Mi amor estos ultimos meses ya casi 9 mesesitos juntos han sido sin duda los mejores de mi vida,<br>
         compartir mi tiempo contigo ha sido la mejor decicion que pude tomar por q eres una persona increible que siempre trata de mejorar<br>
     no sabes lo enojado q me pongo cuando veo que dices que no eres bonita y yo podria quedarme viendote por toda la eternidad, eres lo mas hermoso del mundo
     y con un corazon increible,no sabes la suerte que tengo...<br><br>Y por eso estos ultimos dias eh pensado demasiado en ti por que te extraño muchisimo,queria hacerte algo especial como la personita que eres y espero te haya <br>
-    gustado el jueguito me costo mucho hacerlo jeje 😿,pero creo q valio completamente la pena por que tu siempre me das regalos increible y la verdad yo no sabia q hacer por q soy un desastre,<br> pero quiero demostrarte todo mi amor por siempre jenni sea como sea ❤️<br><br>Tambien queria aprovechar para invitarte a salir,estaba viendo ideas de dates y podemos ir al parque a hacer un picnic y armamos un legooo,que te parece amooll??💕<br>igual tu me dices que diaaa preciosa 😏😽
-    <br><br>te mando un monto de besos guapa,te amoo 😚😚
-        </p>
+    gustado la invitacion, me costo mucho hacerlo jeje 😿,pero creo q valio completamente la pena por que tu siempre me das regalos increible y la verdad yo no sabia q hacer por q soy un desastre,<br> pero quiero demostrarte todo mi amor por siempre jenni sea como sea ❤️<br>
+    <br>te mando un monto de besos guapa,te amoo 😚😚
+        </p><br><p>PD:preparatepara salir amor aunque tu siempre estas divina 😘</p>
 
         <br><br>
 <button onclick="enviarWhats()"> Enviarme tus respuestas 💌</button>
@@ -268,22 +268,13 @@ let respuestasJuego = [];
 let respuestasAmor = [];
 
 const questions = [
-    { q: "esta es super facil 🥰 \n ¿Dónde nos conocimos? ❤️", options: ["en la escuela 🥰", "en la calle 😒", "en instagram 😏"], correct: 0 ,near: [2]},
-    { q: "¿Por qué me enamoré de ti? 😍", options: ["No sé 😒", "Por tus ojitos 😍", "por tu sonrisa 😛"], correct: 1 ,near:[2]},
-    { q: "haber si si sbes amor 😏\n¿Qué me gusta de ti? 🥰", options: ["Todo 😍", "no seee 😒", "mis labios? 🫦"], correct: 0 ,close: [2]},
-    { q: "esta eta un poquito dificil\n¿Cuál es mi película favorita? 🥰", options: ["Iron man 😎", "harry potter ⚡", "no me acuerdoo 😒"], correct: 0 ,close: [2]}
+    { q: "a donde te gustaria ir?❤️", options: ["Irekua 😘", "cibeles 💕", "cine 😏", "megustaria otro lugar amor💕"]},
+    { q: "que quieres hacer? 😘", options: ["No sé 😒", "besarnos JAJAJA😘", "una idea de date de tiktok💕","ir a comer 🫦"]},
+    { q: "cuando nos vemos mi amor? 🥰", options: ["el 20 de este mes (talvez yo no pueda 😓)", "el 27 💕", "otro dia amor 💕"]},
+    { q: "te gusto la invitacion amor? 😏💕", options: ["me encantoooo,teamo ❤️", "esta horrible 😒", "obio si mi amor tu me encantas 👅👅"] }
 ];
 
-    const preguntasAmor = [
-    {
-        q: "¿Qué es lo que más te gusta de nosotros? 💖",
-        options: ["La confianza", "La diversión", "El cariño"]
-    },
-    {
-        q: "¿Cómo te hago sentir? 😏",
-        options: ["Feliz 💖", "Tranquila 😊", "Especial ✨"]
-    }
-];
+   
 
 
 function startGame() {
@@ -292,7 +283,7 @@ function startGame() {
 
 function showQuestion() {
     if (step >= questions.length) {
-    transicionPreguntas(); // 👈 animación bonita
+    transicionFinal(); // 👈 animación bonita
     return;
 }
 
@@ -309,97 +300,18 @@ function showQuestion() {
 
 let stepAmor = 0;
 
-function showPreguntaAmor() {
-   if (stepAmor >= preguntasAmor.length) {
-    transicionFinal(); // 👈 transición bonita
-    return;
-}
 
-    let q = preguntasAmor[stepAmor];
-
-    document.getElementById("app").innerHTML = `
-        <div class="card">
-            <h2>${q.q}</h2>
-            ${q.options.map((o,i)=>`<button onclick="guardarAmor(${i})">${o}</button>`).join("")}
-        </div>
-    `;
-}
-
-function guardarAmor(i) {
-    let q = preguntasAmor[stepAmor];
-
-    // guardar respuesta
-    respuestasAmor.push({
-        pregunta: q.q,
-        respuesta: q.options[i]
-    });
-
-    // mostrar "Okey"
-    document.getElementById("app").innerHTML = `
-        <div class="card">
-            <h2>Okey 💖</h2>
-        </div>
-    `;
-
-    // avanzar después de 1 segundo
-    stepAmor++;
-    setTimeout(showPreguntaAmor, 1000);
-}
 
 function check(i) {
     const res = document.getElementById("res");
-    const q = questions[step];
 
- if (i === q.correct) {
-    res.innerText = "Correcto amoooll ❤️";
-
-    respuestasJuego.push({
-        pregunta: q.q,
-        respuesta: q.options[i],
-        resultado: "Correcto"
-    });
+    res.innerText = "Okey amor 💕";
 
     step++;
     setTimeout(showQuestion, 1000);
 }
-    else if (q.close && q.close.includes(i)) {
-        res.innerText = "Mmm... puede ser 😏 pero intenta otra vez preciosa ";
-    } 
-    else if (q.near && q.near.includes(i)) {
-        res.innerText = "no por completo mi amor 💕";
-    } 
-   else {
-    res.innerText = "ñoo amolcitoo 😿";
 
-    respuestasJuego.push({
-        pregunta: q.q,
-        respuesta: q.options[i],
-        resultado: "Incorrecto"
-    });
-}
-}
 
-function transicionPreguntas() {
-    document.getElementById("app").innerHTML = `
-        <div class="card">
-            <h2 id="textoTransicion">Okey... 😏</h2>
-        </div>
-    `;
-
-    // después cambia el texto
-    setTimeout(() => {
-        document.getElementById("textoTransicion").innerText = "Ahora quiero saber más de nosotros... 💖";
-    }, 1500);
-
-    setTimeout(() => {
-        document.getElementById("textoTransicion").innerText = "Cambio de preguntas... 😳";
-    }, 3000);
-
-    // después empieza el otro juego
-    setTimeout(() => {
-        showPreguntaAmor();
-    }, 4500);
-}
 
 function typeText(text, callback) {
     let i = 0;
@@ -422,17 +334,14 @@ function typeText(text, callback) {
 function transicionFinal() {
     document.getElementById("app").innerHTML = `
         <div class="card">
-            <h2 id="finalTexto">Okey... 💖</h2>
+            <h2 id="finalTexto">Gracias por contestar amor</h2>
         </div>
     `;
 
     setTimeout(() => {
-        document.getElementById("finalTexto").innerText = "Gracias por contestar mi amor 😳";
+        document.getElementById("finalTexto").innerText = "ahora quiero q veas algo...💕";
     }, 1500);
 
-    setTimeout(() => {
-        document.getElementById("finalTexto").innerText = "Ahora quiero decirte algo... ❤️";
-    }, 3000);
 
     setTimeout(() => {
         showFinal(); // 👈 aquí ya entra tu corazón bonito
@@ -510,22 +419,29 @@ let tiempoRestante = 5;
 
 function crearCorazonesBrillantes() {
     const loading = document.getElementById('loading');
-    const corazones = ['❤️', '💕', '💖', '💗'];
-    
+    const corazones = ['lili1.png', 'lili2.png', 'lili3.png', 'gerbera1.png', 'gerbera2.png'];
+
     for (let i = 0; i < 20; i++) {
         const corazon = document.createElement('div');
         corazon.className = 'heart-sparkle';
-        corazon.textContent = corazones[Math.floor(Math.random() * corazones.length)];
-        
+
+        const img = document.createElement('img');
+        img.src = corazones[Math.floor(Math.random() * corazones.length)];
+        img.style.width = '80px';
+        img.style.height = '80px';
+        img.style.objectFit = 'contain';
+
+        corazon.appendChild(img);
+
         const x = Math.random() * 100;
         const y = Math.random() * 100;
-        const delay = Math.random() * 1;
-        
+        const delay = Math.random() * 4;
+
         corazon.style.left = x + '%';
         corazon.style.top = y + '%';
         corazon.style.animationDelay = delay + 's';
         corazon.style.animationDuration = (1.5 + Math.random() * 1) + 's';
-        
+
         loading.appendChild(corazon);
     }
 }
@@ -549,16 +465,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function enviarWhats() {
     let mensaje = "Hola amor 💕 contesté tu juego 😏\n\n";
 
-    mensaje += "🧠 SOBRE TI:\n";
+    mensaje += "vamos a salir a...\n";
     respuestasJuego.forEach((r, i) => {
         mensaje += (i+1) + ". " + r.respuesta + " (" + r.resultado + ")\n";
     });
 
-    mensaje += "\n💖 SOBRE NOSOTROS:\n";
-    respuestasAmor.forEach((r, i) => {
-        mensaje += (i+1) + ". " + r.respuesta + "\n";
-    });
-
+  
     mensaje += "\nTe amooo ❤️";
 
     let numero = "5214622365639";
