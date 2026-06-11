@@ -304,13 +304,18 @@ let stepAmor = 0;
 
 function check(i) {
     const res = document.getElementById("res");
+    const q = questions[step];
 
-    res.innerText = "Okey amor 💕";
+    respuestasJuego.push({
+        pregunta: q.q,
+        respuesta: q.options[i]
+    });
+
+    res.innerText = "Okey... 💖";
 
     step++;
     setTimeout(showQuestion, 1000);
 }
-
 
 
 function typeText(text, callback) {
@@ -465,12 +470,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function enviarWhats() {
     let mensaje = "Hola amor 💕 contesté tu juego 😏\n\n";
 
-    mensaje += "vamos a salir a...\n";
+    mensaje += "Vamos a salir a...\n";
+
     respuestasJuego.forEach((r, i) => {
-        mensaje += (i+1) + ". " + r.respuesta + " (" + r.resultado + ")\n";
+        mensaje += (i + 1) + ". " + r.respuesta + "\n";
     });
 
-  
     mensaje += "\nTe amooo ❤️";
 
     let numero = "5214622365639";
